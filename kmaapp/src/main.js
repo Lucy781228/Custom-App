@@ -1,27 +1,43 @@
+
 import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
-import VTooltip from 'v-tooltip'
+import App from './App.vue'
+import UserList from './components/UserList'
+import VueRouter from 'vue-router'
 
-import NavBar from './components/NavBar'
-// import router from './router'
+Vue.use(VueRouter)
 
-Vue.use(VTooltip, { defaultHtml: false })
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: 'kmaapp',
+      // You could also have named views at the top
+      component: App,
+      children: [{
+        path: 'qlnd',
+        component: UserList
+      }]
+    }
+  ]
+})
 
+router.push('kmaapp/qlnd')
 
 // eslint-disable-next-line
 __webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
 // bind to window
-Vue.prototype.t = t
-Vue.prototype.n = n
-Vue.prototype.OC = OC
-Vue.prototype.OCA = OCA
+Vue.mixin({ methods: { t, n } })
+//Vue.prototype.t = t
+////Vue.prototype.n = n
+// Vue.prototype.OC = OC
+// Vue.prototype.OCA = OCA
 // eslint-disable-next-line camelcase
-Vue.prototype.oc_userconfig = oc_userconfig
+// Vue.prototype.oc_userconfig = oc_userconfig
 
 export default new Vue({
+	router,
 	el: '#content',
-	render: h => h(NavBar),
+	render: h => h(App),
 })
-
