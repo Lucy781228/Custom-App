@@ -3,7 +3,7 @@ import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
 import App from './App.vue'
-import UserList from './components/UserList'
+import TabMenu from './components/TabMenu'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -16,13 +16,13 @@ const router = new VueRouter({
       component: App,
       children: [{
         path: 'qlnd',
-        component: UserList
+        component: TabMenu
       }]
     }
   ]
 })
 
-router.push('kmaapp/qlnd')
+// router.push('kmaapp/qlnd')
 
 // eslint-disable-next-line
 __webpack_public_path__ = generateFilePath(appName, '', 'js/')

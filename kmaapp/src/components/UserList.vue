@@ -14,10 +14,10 @@
       <tbody>
         <tr v-for="item in rows" :key="item.id">
           <th>{{ item.username }}</th>
+          <th>{{ item.fullname }}</th>
           <th>{{ item.password }}</th>
           <th>{{ item.email }}</th>
           <th>{{ item.group }}</th>
-          <th>{{ item.fullname }}</th>
           <th>
             <NcActions>
               <NcActionButton>
@@ -55,7 +55,6 @@
 
 <script>
 import { subscribe, unsubscribe } from "@nextcloud/event-bus";
-import Vue from "vue";
 import { NcButton, NcActions, NcActionButton } from "@nextcloud/vue";
 import Delete from 'vue-material-design-icons/Delete'
 import Pencil from 'vue-material-design-icons/Pencil'
@@ -80,7 +79,7 @@ export default {
       rows: [
         {
           id: 1,
-          username: "Alice",
+          username: "123",
           fullname: "Nguyen Van B",
           password: "abdc",
           email: "guhj@gmail.com",
@@ -88,7 +87,7 @@ export default {
         },
         {
           id: 2,
-          username: "Alice",
+          username: "321",
           fullname: "Nguyen Van B",
           password: "abdc",
           email: "guhj@gmail.com",
